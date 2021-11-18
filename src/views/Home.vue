@@ -1,5 +1,52 @@
 <template>
-  <div class="movie"></div>
+  <div class="movie">
+    <form @submit.prevent="showMovieAndCreateMovie()">
+      <input class="search" type="text" v-model="searchWords" placeholder="search movies" />
+    </form>
+
+    <br />
+    <div class="filter-by-genre">
+      <input type="checkbox" id="checkbox-action" v-model="action" />
+      <label for="checkbox">Action</label>
+      <input type="checkbox" id="checkbox-comedy" v-model="comedy" />
+      <label for="checkbox">Comedy</label>
+      <input type="checkbox" id="checkbox-crime" v-model="crime" />
+      <label for="checkbox">Crime</label>
+      <input type="checkbox" id="checkbox-drama" v-model="drama" />
+      <label for="checkbox">Drama</label>
+    </div>
+
+    <div class="movie-show">
+      <button class="random-movie" @click="randomMovie()">Generate Random Movie</button>
+      <div v-if="Object.keys(movie).length !== 0">
+        <h1>{{ movie.Title }}</h1>
+        <h3>Runtime: {{ movie.formatted_runtime }} | Year: {{ movie.Year }}</h3>
+        <h3>Director: {{ movie.Director }}</h3>
+        <h3>Actors: {{ movie.Actors }}</h3>
+        <img :src="`${movie.Poster}`" alt="" />
+        <h4>Plot: {{ movie.Plot }}</h4>
+        <h4>{{ movie.Awards }} | Box Office: {{ movie.BoxOffice }}</h4>
+        <h4>
+          IMDB Rating: {{ movie.Ratings[0].Value }} | Rotten Tomatoes Rating: {{ movie.Ratings[1].Value }} | Metacritic
+          Rating: {{ movie.Ratings[2].Value }}
+        </h4>
+      </div>
+
+      <div v-if="Object.keys(randomMovieData).length !== 0">
+        <h1>{{ randomMovieData.title }}</h1>
+        <h3>Runtime: {{ randomMovieData.formatted_runtime }} | Year: {{ randomMovieData.year }}</h3>
+        <h3>Director: {{ randomMovieData.director }}</h3>
+        <h3>Actors: {{ randomMovieData.actors }}</h3>
+        <img :src="`${randomMovieData.poster}`" alt="" />
+        <h4>Plot: {{ randomMovieData.plot }}</h4>
+        <h4>{{ randomMovieData.awards }} | Box Office: {{ randomMovieData.box_office }}</h4>
+        <h4>
+          IMDB Rating: {{ randomMovieData.internet_movie_database_rating }} | Rotten Tomatoes Rating:
+          {{ randomMovieData.rotten_tomatoes_rating }} | Metacritic Rating: {{ randomMovieData.metacritic_rating }}
+        </h4>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style></style>
