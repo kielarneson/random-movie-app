@@ -12,8 +12,6 @@
       <label for="checkbox">Comedy</label>
       <input type="checkbox" id="checkbox-crime" v-model="crime" />
       <label for="checkbox">Crime</label>
-      <input type="checkbox" id="checkbox-drama" v-model="drama" />
-      <label for="checkbox">Drama</label>
     </div>
 
     <div class="movie-show">
