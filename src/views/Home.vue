@@ -49,7 +49,11 @@
   </div>
 </template>
 
-<style></style>
+<style>
+.search {
+  text-align: center;
+}
+</style>
 
 <script>
 import axios from "axios";
