@@ -15,6 +15,10 @@ export default {
       formattedSearchArray: [],
       formattedSearchWords: "",
       randomMovieData: {},
+      action: false,
+      comedy: false,
+      crime: false,
+      drama: false,
     };
   },
   created: function () {},
@@ -81,6 +85,35 @@ export default {
           this.errors = error.response.data.errors;
         });
       this.randomMovieData = {};
+    },
+    randomMovie: function () {
+      if (this.action === true) {
+        axios.get("/actions").then((response) => {
+          console.log("Random Action", response);
+          this.randomMovieData = response.data;
+        });
+      } else if (this.comedy === true) {
+        axios.get("/comedies").then((response) => {
+          console.log("Random Comedy", response);
+          this.randomMovieData = response.data;
+        });
+      } else if (this.crime === true) {
+        axios.get("/crimes").then((response) => {
+          console.log("Random Crime", response);
+          this.randomMovieData = response.data;
+        });
+      } else if (this.drama === true) {
+        axios.get("/dramas").then((response) => {
+          console.log("Random Drama", response);
+          this.randomMovieData = response.data;
+        });
+      } else {
+        axios.get("/movies").then((response) => {
+          console.log("Random movie", response);
+          this.randomMovieData = response.data;
+        });
+      }
+      this.movie = {};
     },
   },
 };
