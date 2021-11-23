@@ -14,10 +14,12 @@
       <label for="checkbox">Comedy</label>
       <!-- <input type="checkbox" id="checkbox-crime" v-model="crime" />
       <label for="checkbox">Crime</label> -->
-      <input type="checkbox" id="checkbox-drama" v-model="documentary" />
+      <input type="checkbox" id="checkbox-documentary" v-model="documentary" />
       <label for="checkbox">Documentary</label>
       <input type="checkbox" id="checkbox-drama" v-model="drama" />
       <label for="checkbox">Drama</label>
+      <input type="checkbox" id="checkbox-family" v-model="family" />
+      <label for="checkbox">Family</label>
     </div>
 
     <div class="movie-show">
@@ -76,6 +78,7 @@ export default {
       // crime: false,
       documentary: false,
       drama: false,
+      family: false,
     };
   },
   created: function () {},
@@ -177,6 +180,11 @@ export default {
       } else if (this.drama === true) {
         axios.get("/dramas").then((response) => {
           console.log("Random Drama", response);
+          this.randomMovieData = response.data;
+        });
+      } else if (this.family === true) {
+        axios.get("/families").then((response) => {
+          console.log("Random Family", response);
           this.randomMovieData = response.data;
         });
       } else {
