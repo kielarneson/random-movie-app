@@ -20,14 +20,16 @@
       <label for="checkbox">Drama</label>
       <input type="checkbox" id="checkbox-family" v-model="family" />
       <label for="checkbox">Family</label>
-      <input type="checkbox" id="checkbox-family" v-model="horror" />
+      <input type="checkbox" id="checkbox-horror" v-model="horror" />
       <label for="checkbox">Horror</label>
-      <input type="checkbox" id="checkbox-family" v-model="romance" />
+      <input type="checkbox" id="checkbox-romance" v-model="romance" />
       <label for="checkbox">Romance</label>
-      <input type="checkbox" id="checkbox-family" v-model="sciFi" />
+      <input type="checkbox" id="checkbox-scifi" v-model="sciFi" />
       <label for="checkbox">Sci-Fi</label>
-      <input type="checkbox" id="checkbox-family" v-model="sport" />
+      <input type="checkbox" id="checkbox-sports" v-model="sport" />
       <label for="checkbox">Sports</label>
+      <input type="checkbox" id="checkbox-thriller" v-model="thriller" />
+      <label for="checkbox">Thriller</label>
     </div>
 
     <div class="movie-show">
@@ -91,6 +93,7 @@ export default {
       romance: false,
       sciFi: false,
       sport: false,
+      thriller: false,
     };
   },
   created: function () {},
@@ -217,6 +220,11 @@ export default {
       } else if (this.sport === true) {
         axios.get("/sports").then((response) => {
           console.log("Random Sport", response);
+          this.randomMovieData = response.data;
+        });
+      } else if (this.thriller === true) {
+        axios.get("/thrillers").then((response) => {
+          console.log("Random Thriller", response);
           this.randomMovieData = response.data;
         });
       } else {
