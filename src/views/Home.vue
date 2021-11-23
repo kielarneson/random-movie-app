@@ -24,6 +24,8 @@
       <label for="checkbox">Horror</label>
       <input type="checkbox" id="checkbox-family" v-model="romance" />
       <label for="checkbox">Romance</label>
+      <input type="checkbox" id="checkbox-family" v-model="sciFi" />
+      <label for="checkbox">Sci-Fi</label>
     </div>
 
     <div class="movie-show">
@@ -85,6 +87,7 @@ export default {
       family: false,
       horror: false,
       romance: false,
+      sciFi: false,
     };
   },
   created: function () {},
@@ -201,6 +204,11 @@ export default {
       } else if (this.romance === true) {
         axios.get("/romances").then((response) => {
           console.log("Random Romance", response);
+          this.randomMovieData = response.data;
+        });
+      } else if (this.sciFi === true) {
+        axios.get("/scifis").then((response) => {
+          console.log("Random Sci-Fi", response);
           this.randomMovieData = response.data;
         });
       } else {
