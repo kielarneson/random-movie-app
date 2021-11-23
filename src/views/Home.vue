@@ -8,12 +8,14 @@
     <div class="filter-by-genre">
       <input type="checkbox" id="checkbox-action" v-model="action" />
       <label for="checkbox">Action</label>
-      <input type="checkbox" id="checkbox-action" v-model="biography" />
-      <label for="checkbox">Biography</label>
+      <!-- <input type="checkbox" id="checkbox-action" v-model="biography" />
+      <label for="checkbox">Biography</label> -->
       <input type="checkbox" id="checkbox-comedy" v-model="comedy" />
       <label for="checkbox">Comedy</label>
-      <input type="checkbox" id="checkbox-crime" v-model="crime" />
-      <label for="checkbox">Crime</label>
+      <!-- <input type="checkbox" id="checkbox-crime" v-model="crime" />
+      <label for="checkbox">Crime</label> -->
+      <input type="checkbox" id="checkbox-drama" v-model="documentary" />
+      <label for="checkbox">Documentary</label>
       <input type="checkbox" id="checkbox-drama" v-model="drama" />
       <label for="checkbox">Drama</label>
     </div>
@@ -69,9 +71,10 @@ export default {
       formattedSearchWords: "",
       randomMovieData: {},
       action: false,
-      biography: false,
+      // biography: false,
       comedy: false,
-      crime: false,
+      // crime: false,
+      documentary: false,
       drama: false,
     };
   },
@@ -141,24 +144,34 @@ export default {
       this.randomMovieData = {};
     },
     randomMovie: function () {
-      if (this.action === true) {
+      if (this.action === true && this.comedy === true) {
+        axios.get("/action_comedies").then((response) => {
+          console.log("Random Action Comedy", response);
+          this.randomMovieData = response.data;
+        });
+      } else if (this.action === true) {
         axios.get("/actions").then((response) => {
           console.log("Random Action", response);
           this.randomMovieData = response.data;
         });
-      } else if (this.biography === true) {
-        axios.get("/biographies").then((response) => {
-          console.log("Random Biography", response);
-          this.randomMovieData = response.data;
-        });
+        // } else if (this.biography === true) {
+        //   axios.get("/biographies").then((response) => {
+        //     console.log("Random Biography", response);
+        //     this.randomMovieData = response.data;
+        //   });
       } else if (this.comedy === true) {
         axios.get("/comedies").then((response) => {
           console.log("Random Comedy", response);
           this.randomMovieData = response.data;
         });
-      } else if (this.crime === true) {
-        axios.get("/crimes").then((response) => {
-          console.log("Random Crime", response);
+        // } else if (this.crime === true) {
+        //   axios.get("/crimes").then((response) => {
+        //     console.log("Random Crime", response);
+        //     this.randomMovieData = response.data;
+        //   });
+      } else if (this.documentary === true) {
+        axios.get("/documentaries").then((response) => {
+          console.log("Random Documentary", response);
           this.randomMovieData = response.data;
         });
       } else if (this.drama === true) {
