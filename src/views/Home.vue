@@ -8,6 +8,8 @@
     <div class="filter-by-genre">
       <input type="checkbox" id="checkbox-action" v-model="action" />
       <label for="checkbox">Action</label>
+      <input type="checkbox" id="checkbox-action" v-model="biography" />
+      <label for="checkbox">Biography</label>
       <input type="checkbox" id="checkbox-comedy" v-model="comedy" />
       <label for="checkbox">Comedy</label>
       <input type="checkbox" id="checkbox-crime" v-model="crime" />
@@ -67,6 +69,7 @@ export default {
       formattedSearchWords: "",
       randomMovieData: {},
       action: false,
+      biography: false,
       comedy: false,
       crime: false,
       drama: false,
@@ -141,6 +144,11 @@ export default {
       if (this.action === true) {
         axios.get("/actions").then((response) => {
           console.log("Random Action", response);
+          this.randomMovieData = response.data;
+        });
+      } else if (this.biography === true) {
+        axios.get("/biographies").then((response) => {
+          console.log("Random Biography", response);
           this.randomMovieData = response.data;
         });
       } else if (this.comedy === true) {
