@@ -162,16 +162,24 @@ export default {
       this.randomMovieData = {};
     },
     randomMovie: function () {
-      if (this.action === true && this.comedy === true) {
-        axios.get("/action_comedies").then((response) => {
-          console.log("Random Action Comedy", response);
-          this.randomMovieData = response.data;
-        });
-      } else if (this.action === true) {
-        axios.get("/actions").then((response) => {
-          console.log("Random Action", response);
-          this.randomMovieData = response.data;
-        });
+      if (this.action === true) {
+        // Nested if/else conditionals / Do this for all other possibilities
+        if (this.comedy === true) {
+          axios.get("/action_comedies").then((response) => {
+            console.log("Random Action Comedy", response);
+            this.randomMovieData = response.data;
+          });
+        } else if (this.drama === true) {
+          axios.get("/action_dramas").then((response) => {
+            console.log("Random Action Drama", response);
+            this.randomMovieData = response.data;
+          });
+        } else {
+          axios.get("/actions").then((response) => {
+            console.log("Random Action", response);
+            this.randomMovieData = response.data;
+          });
+        }
         // } else if (this.biography === true) {
         //   axios.get("/biographies").then((response) => {
         //     console.log("Random Biography", response);
