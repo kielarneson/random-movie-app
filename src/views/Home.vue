@@ -163,13 +163,16 @@ export default {
     },
     randomMovie: function () {
       if (this.action === true) {
-        // Nested if/else conditionals / Do this for all other possibilities
         if (this.comedy === true) {
           axios.get("/action_comedies").then((response) => {
             console.log("Random Action Comedy", response);
             this.randomMovieData = response.data;
           });
-          // Add documentary here
+        } else if (this.documentary === true) {
+          axios.get("/action_documentaries").then((response) => {
+            console.log("Random Action Documentary", response);
+            this.randomMovieData = response.data;
+          });
         } else if (this.drama === true) {
           axios.get("/action_dramas").then((response) => {
             console.log("Random Action Drama", response);
@@ -211,11 +214,6 @@ export default {
             this.randomMovieData = response.data;
           });
         }
-        // } else if (this.biography === true) {
-        //   axios.get("/biographies").then((response) => {
-        //     console.log("Random Biography", response);
-        //     this.randomMovieData = response.data;
-        //   });
       } else if (this.comedy === true) {
         axios.get("/comedies").then((response) => {
           console.log("Random Comedy", response);
