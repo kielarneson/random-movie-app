@@ -200,6 +200,11 @@ export default {
             console.log("Random Action Sport", response);
             this.randomMovieData = response.data;
           });
+        } else if (this.thriller === true) {
+          axios.get("/action_thrillers").then((response) => {
+            console.log("Random Action Thriller", response);
+            this.randomMovieData = response.data;
+          });
         } else {
           axios.get("/actions").then((response) => {
             console.log("Random Action", response);
