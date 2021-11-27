@@ -169,9 +169,15 @@ export default {
             console.log("Random Action Comedy", response);
             this.randomMovieData = response.data;
           });
+          // Add documentary here
         } else if (this.drama === true) {
           axios.get("/action_dramas").then((response) => {
             console.log("Random Action Drama", response);
+            this.randomMovieData = response.data;
+          });
+        } else if (this.family === true) {
+          axios.get("/action_families").then((response) => {
+            console.log("Random Action Family", response);
             this.randomMovieData = response.data;
           });
         } else {
