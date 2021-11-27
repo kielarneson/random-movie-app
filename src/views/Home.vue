@@ -180,6 +180,11 @@ export default {
             console.log("Random Action Family", response);
             this.randomMovieData = response.data;
           });
+        } else if (this.horror === true) {
+          axios.get("/action_horrors").then((response) => {
+            console.log("Random Action Horror", response);
+            this.randomMovieData = response.data;
+          });
         } else {
           axios.get("/actions").then((response) => {
             console.log("Random Action", response);
