@@ -190,6 +190,11 @@ export default {
             console.log("Random Action Romance", response);
             this.randomMovieData = response.data;
           });
+        } else if (this.sciFi === true) {
+          axios.get("/action_scifis").then((response) => {
+            console.log("Random Action Sci-Fi", response);
+            this.randomMovieData = response.data;
+          });
         } else {
           axios.get("/actions").then((response) => {
             console.log("Random Action", response);
