@@ -162,55 +162,21 @@ export default {
       this.randomMovieData = {};
     },
     randomMovie: function () {
+      // All action combination possibilities
       if (this.action === true) {
         if (this.comedy === true) {
-          axios.get("/action_comedies").then((response) => {
-            console.log("Random Action Comedy", response);
-            this.randomMovieData = response.data;
-          });
-        } else if (this.documentary === true) {
-          axios.get("/action_documentaries").then((response) => {
-            console.log("Random Action Documentary", response);
+          axios.get("/action_movies/comedy").then((response) => {
+            console.log("Random Action Comedy Movie", response);
             this.randomMovieData = response.data;
           });
         } else if (this.drama === true) {
-          axios.get("/action_dramas").then((response) => {
-            console.log("Random Action Drama", response);
-            this.randomMovieData = response.data;
-          });
-        } else if (this.family === true) {
-          axios.get("/action_families").then((response) => {
-            console.log("Random Action Family", response);
-            this.randomMovieData = response.data;
-          });
-        } else if (this.horror === true) {
-          axios.get("/action_horrors").then((response) => {
-            console.log("Random Action Horror", response);
-            this.randomMovieData = response.data;
-          });
-        } else if (this.romance === true) {
-          axios.get("/action_romances").then((response) => {
-            console.log("Random Action Romance", response);
-            this.randomMovieData = response.data;
-          });
-        } else if (this.sciFi === true) {
-          axios.get("/action_scifis").then((response) => {
-            console.log("Random Action Sci-Fi", response);
-            this.randomMovieData = response.data;
-          });
-        } else if (this.sport === true) {
-          axios.get("/action_sports").then((response) => {
-            console.log("Random Action Sport", response);
-            this.randomMovieData = response.data;
-          });
-        } else if (this.thriller === true) {
-          axios.get("/action_thrillers").then((response) => {
-            console.log("Random Action Thriller", response);
+          axios.get("/action_movies/drama").then((response) => {
+            console.log("Random Action Drama Movie", response);
             this.randomMovieData = response.data;
           });
         } else {
-          axios.get("/actions").then((response) => {
-            console.log("Random Action", response);
+          axios.get("/action_movies").then((response) => {
+            console.log("Random Action Movie", response);
             this.randomMovieData = response.data;
           });
         }
