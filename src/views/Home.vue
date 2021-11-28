@@ -173,6 +173,9 @@ export default {
           axios.get("/action_movies/drama").then((response) => {
             console.log("Random Action Drama Movie", response);
             this.randomMovieData = response.data;
+
+            // Here is where I would write the logic to not show a random movie twice in a row!
+            //
           });
         } else {
           axios.get("/action_movies").then((response) => {
